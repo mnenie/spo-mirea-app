@@ -1,3 +1,17 @@
+<script setup>
+
+</script>
+
 <template>
-  <div>Hello the best team from mnenie</div>
+  <div class="error">
+    error
+  </div>
 </template>
+
+<style>
+.error {
+  background-color: antiquewhite;
+}
+</style>
+
+
