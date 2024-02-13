@@ -4,7 +4,7 @@
 
 <template>
   <div class="error">
-    error
+    Molch the best 
   </div>
 </template>
 
