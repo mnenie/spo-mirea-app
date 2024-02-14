@@ -1,17 +1,5 @@
-<script setup>
-
-</script>
-
 <template>
-  <div class="error">
-    Molch the best 
-  </div>
+  <component :is="$route.meta.layout">
+    <router-view />
+  </component>
 </template>
-
-<style>
-.error {
-  background-color: antiquewhite;
-}
-</style>
-
-
