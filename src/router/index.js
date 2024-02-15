@@ -1,5 +1,5 @@
 import DefaultLayout from '@/layouts/DefaultLayout.vue'
-import { AUTH_ROUTE, CODE_ROUTE, HOME_ROUTE, IAM_ROUTE, PROFILE_ROUTE, REGISTRATION_ROUTE } from '@/utils/consts'
+import { AUTH_ROUTE, CODE_ROUTE, CONFIRM_ROUTE, HOME_ROUTE, IAM_ROUTE, PROFILE_ROUTE, REGISTRATION_ROUTE } from '@/utils/consts'
 import { createRouter, createWebHistory } from 'vue-router'
 
 const router = createRouter({
@@ -53,6 +53,26 @@ const router = createRouter({
         layout: DefaultLayout
       }
     },
+    {
+      path: CONFIRM_ROUTE,
+      name: 'confirm',
+      component: () => import('@/pages/ConfirmPage.vue'),
+      meta: {
+        layout: DefaultLayout
+      },
+      children: [
+        {
+          path: '/confirm/phone',
+          name: 'number',
+          component: () => import('@/components/elements/confirm/ConfirmNumber.vue'),
+        },
+        { 
+          path: '/confirm/email',
+          name: 'email',
+          component: () => import('@/components/elements/confirm/ConfirmEmail.vue'),
+        }
+      ]
+    }
   ]
 })
 

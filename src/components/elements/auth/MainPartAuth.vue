@@ -1,14 +1,19 @@
 <script setup>
-import { AUTH_ROUTE } from '@/utils/consts'
+import { AUTH_ROUTE, REGISTRATION_ROUTE } from '@/utils/consts'
+import { useRoute, useRouter } from 'vue-router';
+
+const route = useRoute()
+const router = useRouter()
 </script>
 
 <template>
   <div class="auth_main_part">
-    <p class="name">{{ $route.path === AUTH_ROUTE ? 'Вход' : 'Регистрация' }}</p>
+    <p class="name">{{ route.path === AUTH_ROUTE ? 'Вход' : 'Регистрация' }}</p>
     <div class="btn-section">
-      <RedButton>Продолжить с почтой</RedButton>
-      <BorderButton>Использовать номер телефона</BorderButton>
+      <RedButton @click="router.push({path: '/confirm/email', query: {from: route.name}})">Продолжить с почтой</RedButton>
+      <BorderButton @click="router.push({path: '/confirm/phone', query: {from: route.name}})">Использовать номер телефона</BorderButton>
     </div>
+    <span @click="route.path === AUTH_ROUTE ? router.push(REGISTRATION_ROUTE) : router.push(AUTH_ROUTE)" class="another">{{ route.path === AUTH_ROUTE ? 'Или зарегистрироваться в приложении' : 'Или войти в приложение'}}</span>
   </div>
 </template>
 
@@ -31,5 +36,11 @@ import { AUTH_ROUTE } from '@/utils/consts'
   flex-direction: column;
   gap: 20px;
   width: 100%;
+}
+.another{
+  font-weight: 400;
+  font-size: 12px;
+  color: var(--red-color);
+  margin-top: -10px;
 }
 </style>

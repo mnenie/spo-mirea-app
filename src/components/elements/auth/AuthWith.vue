@@ -1,7 +1,14 @@
 <script setup>
 import {ref} from 'vue'
+import {useAuth} from '@/stores/auth.store'
+
+const auth = useAuth()
+const onGoogleSubmit = async () => {
+  await auth.userLoginWithGoogle()
+}
+
 const authIcons = ref([
-  {id: 1, name: 'google', url: '/icons/google.png'}
+  {id: 1, name: 'google', url: '/icons/google.png', submit: onGoogleSubmit}
 ])
 </script>
 
@@ -13,7 +20,7 @@ const authIcons = ref([
       <div class="line"></div>
     </div>
     <div class="btns-section">
-      <div v-for="i in authIcons" :key="i.id" class="btn">
+      <div v-for="i in authIcons" :key="i.id" @click="i.submit" class="btn">
         <img :src="i.url" :alt="i.name">
       </div>
     </div>
