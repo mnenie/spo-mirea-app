@@ -26,7 +26,7 @@ describe('AuthWith', async () => {
     spyUserLoginWithGoogle.mockImplementation(() => Promise.resolve())
     wrapper = mount(AuthWith)
     await wrapper.find('.btn img').trigger('click')
-    expect(spyUserLoginWithGoogle).toHaveBeenCalled()
+    expect(spyUserLoginWithGoogle).toHaveBeenCalled().toMatchSnapshot()
     spyUserLoginWithGoogle.mockRestore()
   })
 })
