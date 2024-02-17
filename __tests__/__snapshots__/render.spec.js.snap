@@ -26,7 +26,7 @@ exports[`ConfirmEmail > should render correctly 1`] = `
       <!--v-if-->
     </div>
   </div>
-  <redbutton data-v-a90709b2="">Продолжить</redbutton>
+  <redbutton data-v-a90709b2="" data-type="sumbit">Продолжить</redbutton>
 </div>"
 `;
 
