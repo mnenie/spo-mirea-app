@@ -1,0 +1,46 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`AuthWith > should render correctly 1`] = `
+"<div data-v-cc9dd5da="" class="auth_with">
+  <div data-v-cc9dd5da="" class="line-section">
+    <div data-v-cc9dd5da="" class="line"></div><span data-v-cc9dd5da="" class="line_name">Зайти с помощью</span>
+    <div data-v-cc9dd5da="" class="line"></div>
+  </div>
+  <div data-v-cc9dd5da="" class="btns-section">
+    <div data-v-cc9dd5da="" class="btn"><img data-v-cc9dd5da="" src="/icons/google.png" alt="google"></div>
+  </div>
+</div>"
+`;
+
+exports[`ConfirmEmail > should render correctly 1`] = `
+"<div data-v-a90709b2="" class="confirm">
+  <div data-v-a90709b2="" class="text">
+    <h1 data-v-a90709b2="">Мой Аккаунт</h1>
+    <p data-v-a90709b2="">Пожалуйста, введите свой действующий email и введите пароль.</p>
+    <div data-v-a90709b2="" style="display: flex; flex-direction: column; margin-bottom: 15px; gap: 5px;">
+      <defaultinput data-v-a90709b2="" placeholder="Введите email"></defaultinput>
+      <!--v-if-->
+    </div>
+    <div data-v-a90709b2="" style="display: flex; flex-direction: column; margin-bottom: 15px; gap: 5px;">
+      <defaultinput data-v-a90709b2="" type="password" placeholder="Введите пароль"></defaultinput>
+      <!--v-if-->
+    </div>
+  </div>
+  <redbutton data-v-a90709b2="">Продолжить</redbutton>
+</div>"
+`;
+
+exports[`ConfirmNumber > should render correctly 1`] = `
+"<div data-v-cc0f9ae9="" class="confirm">
+  <div data-v-cc0f9ae9="" class="text">
+    <h1 data-v-cc0f9ae9="">Мой номер</h1>
+    <p data-v-cc0f9ae9="">Пожалуйста, введите свой действующий номер телефона. Мы вышлем вам 4-значный код для подтверждения вашей учетной записи.</p>
+    <defaultinput data-v-cc0f9ae9="" modelvalue="" placeholder="+7 (XXX) XXX-XX-XX"></defaultinput>
+  </div>
+  <redbutton data-v-cc0f9ae9="">Продолжить</redbutton>
+</div>"
+`;
+
+exports[`NameAuth > should render correctly 1`] = `"<h1 data-v-7d796deb="" class="name"> Знакомства + </h1>"`;
+
+exports[`RulesAuth > should render correctly 1`] = `"<div data-v-1f0eb9a3="" class="rules"><span data-v-1f0eb9a3="" class="span"> Правила пользования </span><span data-v-1f0eb9a3="" datatype="redirect" class="span"> Политика конфиденциальности </span></div>"`;

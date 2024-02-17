@@ -3,7 +3,7 @@
     <slot />
   </button>
 </template>
-
+ 
 
 <style scoped>
 .red_btn{

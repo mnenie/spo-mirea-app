@@ -1,6 +1,5 @@
 <script setup>
-import helperRedirectTinder from '@/helpers/helperRedirectTinder'
-const { redirect } = helperRedirectTinder()
+import {redirect} from '@/helpers/helperRedirectTinder'
 </script>
 
 <template>
@@ -8,7 +7,7 @@ const { redirect } = helperRedirectTinder()
     <span @click="redirect" class="span">
       Правила пользования
     </span>
-    <span @click="redirect" class="span">
+    <span datatype="redirect" @click="redirect" class="span">
       Политика конфиденциальности
     </span>
   </div>
