@@ -50,7 +50,7 @@ const onSubmit = handleSubmit(async (values) => {
         <span v-if="errors.password" style='color: var(--red-color); font-size: 10px;'>{{ errors.password }}</span>
       </div>
     </div>
-    <RedButton  @click="onSubmit">Продолжить</RedButton>
+    <RedButton @click="onSubmit">Продолжить</RedButton>
   </div>
 </template>
 

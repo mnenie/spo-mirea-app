@@ -43,4 +43,4 @@ exports[`ConfirmNumber > should render correctly 1`] = `
 
 exports[`NameAuth > should render correctly 1`] = `"<h1 data-v-7d796deb="" class="name"> Знакомства + </h1>"`;
 
-exports[`RulesAuth > should render correctly 1`] = `"<div data-v-1f0eb9a3="" class="rules"><span data-v-1f0eb9a3="" class="span"> Правила пользования </span><span data-v-1f0eb9a3="" datatype="redirect" class="span"> Политика конфиденциальности </span></div>"`;
+exports[`RulesAuth > should render correctly 1`] = `"<div data-v-1f0eb9a3="" class="rules"><span data-v-1f0eb9a3="" class="span"> Правила пользования </span><span data-v-1f0eb9a3="" class="span"> Политика конфиденциальности </span></div>"`;

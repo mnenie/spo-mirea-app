@@ -7,7 +7,7 @@ import {redirect} from '@/helpers/helperRedirectTinder'
     <span @click="redirect" class="span">
       Правила пользования
     </span>
-    <span datatype="redirect" @click="redirect" class="span">
+    <span @click="redirect" class="span">
       Политика конфиденциальности
     </span>
   </div>
