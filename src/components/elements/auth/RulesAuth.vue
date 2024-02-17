@@ -1,6 +1,5 @@
 <script setup>
-import helperRedirectTinder from '@/helpers/helperRedirectTinder'
-const { redirect } = helperRedirectTinder()
+import {redirect} from '@/helpers/helperRedirectTinder'
 </script>
 
 <template>

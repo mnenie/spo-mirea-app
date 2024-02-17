@@ -3,12 +3,12 @@
     <slot />
   </button>
 </template>
-
+ 
 
 <style scoped>
 .red_btn{
   width: 100%;
-  height: 56px;
+  height: 50px;
   display: flex;
   align-items: center;
   justify-content: center;

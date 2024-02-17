@@ -1,3 +1,6 @@
+import { initializeApp } from "firebase/app";
+import {getAuth} from 'firebase/auth'
+
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_API_KEY_FIREBASE,
   authDomain: "tinder-1ed73.firebaseapp.com",
@@ -7,4 +10,6 @@ const firebaseConfig = {
   appId: "1:887682132892:web:efbc8434a4c9bf6fcf7659"
 };
 
+const app = initializeApp(firebaseConfig)
+export const auth = getAuth(app)
 export default firebaseConfig
