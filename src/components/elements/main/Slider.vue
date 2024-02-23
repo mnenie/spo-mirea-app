@@ -1,0 +1,3 @@
+<template>
+ дядька slider
+</template>
