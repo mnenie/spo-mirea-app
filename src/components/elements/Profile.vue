@@ -17,19 +17,27 @@
     </div>
     <div class="profile-details">
       <label for="firstName">Имя:</label>
-      <input type="text" id="firstName" v-model="firstName" @input="updateFirstName" />
+      <DefaultInput
+        type="text"
+        v-model="firstName"
+        @input="updateFirstName"
+        :placeholder="'Введите своё имя...'"
+      />
       <br />
       <label for="lastName">Фамилия:</label>
-      <input type="text" id="lastName" v-model="lastName" @input="updateLastName" />
+      <DefaultInput
+        type="text"
+        v-model="lastName"
+        :placeholder="'Введите свою фамилию...'"
+        @input="updateLastName"
+      />
     </div>
-    <button class="Iam-btn">Подтвердить</button>
+    <RedButton>Подтвердить</RedButton>
   </div>
 </template>
 
 <script setup>
 import { ref } from 'vue'
-import '@fortawesome/fontawesome-free/css/all.css'
-import RedButton from '../ui/RedButton.vue'
 
 const imageUrl = ref(null)
 const firstName = ref('')
@@ -62,6 +70,10 @@ console.log(lastName.value)
 <style scoped>
 .profile-title {
   margin-bottom: 20px;
+  align-self: flex-start;
+  font-weight: 400;
+  font-size: 30px;
+  margin-bottom: 78px;
 }
 .profile-form {
   display: flex;
@@ -74,6 +86,7 @@ console.log(lastName.value)
   flex-direction: column;
   margin-right: 20px;
   position: relative;
+  margin-bottom: 50px;
 }
 
 .default-profile-image {
@@ -86,20 +99,14 @@ console.log(lastName.value)
   width: 100px;
   height: auto;
 }
-/* Добавленные стили для рамок инпутов */
-.profile-details input[type='text'] {
-  width: 100%;
-  height: 30px; /* Высота инпута */
-  border-radius: 10px; /* Слегка округленные углы */
-  border: 1px solid #ccc; /* Толщина и цвет рамки */
-  padding: 8px; /* Отступ внутри инпута */
-  margin-bottom: 10px; /* Отступ между инпутами */
-}
+
 .profile-details {
   margin-top: 20px;
-  font-family: Arial, sans-serif;
+
   display: flex;
   flex-direction: column;
+  width: 100%;
+  margin-bottom: 100px;
 }
 .file-input-label {
   text-align: center;
