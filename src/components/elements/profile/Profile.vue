@@ -76,7 +76,6 @@ const handleFileUpload = (event) => {
 
 const updateFirstName = (event) => {
   firstName.value = event.target.value
-  console.log(firstName.value, 'Внутрии функции')
 }
 
 // Обновление значения фамилии
@@ -86,7 +85,6 @@ const updateLastName = (event) => {
 
 const updateDate = (e) => {
   date.value = e
-  console.log(e)
 }
 const validationSchema = toTypedSchema(
   zod.object({
@@ -95,11 +93,7 @@ const validationSchema = toTypedSchema(
       .nonempty('*Поле firstname не должно быть пустым'),
     lastName: zod
       .string({ required_error: '*Поле lastname обязательно для заполнения' })
-      .nonempty('*Поле lastname не должно быть пустым'),
-
-    date: zod
-      .string({ required_error: '*Поле date обязательно для заполнения' })
-      .nonempty('*Поле date не должно быть пустым')
+      .nonempty('*Поле lastname не должно быть пустым')
   })
 )
 
@@ -108,16 +102,13 @@ const { handleSubmit, errors } = useForm({
 })
 
 const { value: firstName } = useField('firstName')
-const { value: lastName } = useField('lastname')
+const { value: lastName } = useField('lastName')
 
 const router = useRouter()
 
 const onSubmit = handleSubmit(async (values) => {
   router.push(IAM_ROUTE)
 })
-
-console.log(firstName.value)
-console.log(lastName.value)
 </script>
 
 <style scoped>
