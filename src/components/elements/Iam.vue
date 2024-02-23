@@ -29,7 +29,6 @@
 <script setup>
 import { ref } from 'vue'
 import '@fortawesome/fontawesome-free/css/all.css'
-import RedButton from '../ui/RedButton.vue'
 
 const imageUrl = ref(null)
 const firstName = ref('')
