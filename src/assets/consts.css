@@ -4,21 +4,33 @@
   box-sizing: border-box;
 }
 
-body{
+body {
   max-width: 412px;
   margin: 0 auto;
   width: 100%;
   height: 100dvh;
   overflow-x: hidden;
-  font-family: 'Zilla Slab', sans-serif;
+  font-family: 'Zilla Slab', sans-serif !important;
 }
 
-.container{
+.container {
   max-width: 295px;
   margin: 0 auto;
   width: 100%;
 }
 
-button{
+button {
   cursor: pointer;
+}
+.vuejs3-datepicker__value {
+  min-width: 100% !important;
+}
+.vuejs3-datepicker__calendar-topbar {
+  background-color: var(--red-color) !important ;
+}
+.vuejs3-datepicker__calendar .cell.selected {
+  background: var(--red-color) !important ;
+}
+.vuejs3-datepicker__value {
+  border: 1px solid var(--border-color) !important;
 }
