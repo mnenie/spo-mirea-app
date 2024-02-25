@@ -13,11 +13,10 @@ const changeColor = (id) => {
 </script>
 
 <template>
-  <div class="$1">
+  <div class="iam">
     <div v-for="filter in filters" :key="filter.id" @click="changeColor(filter.id)" style="cursor: pointer;" class="btn" :class="{'active': filter.active}">
       <span>{{ filter.name }}</span>
     </div>
-    <RedButton>Продолжить</RedButton>
   </div>
 </template>
 
@@ -49,5 +48,10 @@ const changeColor = (id) => {
   background-image: url('/icons/check.png'); 
   background-size: contain; 
   background-repeat: no-repeat; 
+}
+.iam{
+  display: flex;
+  flex-direction: column;
+  gap: 21px;
 }
 </style>
