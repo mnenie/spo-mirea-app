@@ -5,12 +5,12 @@
       :modules="modules"
       class="mySwiper"
     >
-      <swiper-slide><img src="../../../../public/Img/slider-pic1.jpg" class="slide-image"></swiper-slide>
-      <swiper-slide><img src="../../../../public/Img/slider-pic2.jpg" class="slide-image"></swiper-slide>
-      <swiper-slide><img src="../../../../public/Img/slider-pic3.jpg" class="slide-image"></swiper-slide>
-      <swiper-slide><img src="../../../../public/Img/slider-pic4.jpg" class="slide-image"></swiper-slide>
+      <swiper-slide><img src="/Img/slider-pic1.jpg" class="slide-image"></swiper-slide>
+      <swiper-slide><img src="/Img/slider-pic2.jpg" class="slide-image"></swiper-slide>
+      <swiper-slide><img src="/Img/slider-pic3.jpg" class="slide-image"></swiper-slide>
+      <swiper-slide><img src="/Img/slider-pic4.jpg" class="slide-image"></swiper-slide>
 
-
+      <!-- путь до public писать не надо /Img/* ты уже попадаешь в файл в папке Img -->
     </swiper>
   </template>
   

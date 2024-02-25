@@ -1,5 +1,9 @@
+<script setup>
+import Slider from '@/components/elements/home/Slider.vue';
+</script>
+
 <template>
   <div>
-    home
+    <Slider />
   </div>
 </template>
