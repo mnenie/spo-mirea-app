@@ -27,3 +27,15 @@ ___test6___
 ___test7___
 
 <img src="./public/tests_snaps/test7.png" />
+
+___test8___
+
+<img src="./public/tests_snaps/test8.png" />
+
+___test9___
+
+<img src="./public/tests_snaps/test9.png" />
+
+___test10___
+
+<img src="./public/tests_snaps/test10.png" />
