@@ -1,9 +1,11 @@
+<script setup>
+import Code from '@/components/elements/code/Code.vue'
+</script>
+
 <template>
   <div>
-    code 
+    <Code />
   </div>
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>

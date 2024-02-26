@@ -7,9 +7,6 @@
   
 <style scoped>
   .filter_btn {
-  position: fixed;
-  top: 20px;
-  right: 20px;
   width: 52px;
   height: 52px;
   display: flex;
