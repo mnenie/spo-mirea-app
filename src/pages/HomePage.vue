@@ -7,18 +7,21 @@ import DislikeButton from '@/components/ui/DislikeButton.vue';
 </script>
 
 <template>
-  <div class = "top-pannel">
-    <BackButton />
-    <h1>Поиск</h1>
-    <FilterButton />
-  </div>
-  <div class="slider">
-    <Slider />
-  </div>
+  <div class = "container">
+    <div class = "top-pannel">
+      <BackButton />
+      <h1>Поиск</h1>
+      <FilterButton />
+    </div>
 
-  <div>
-    <LikeButton />
-    <DislikeButton />
+    <div class="slider">
+      <Slider />
+    </div>
+
+    <div class="bottom-pannel">
+      <DislikeButton />
+      <LikeButton />
+    </div>
   </div>
 </template>
 
@@ -27,9 +30,10 @@ import DislikeButton from '@/components/ui/DislikeButton.vue';
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding-top: 44px;
 }
 
-.h1 {
+h1 {
   color: rgb(0, 0, 0);
   font-family: Zilla Slab;
   font-size: 22px;
@@ -40,8 +44,17 @@ import DislikeButton from '@/components/ui/DislikeButton.vue';
 }
 
 .slider {
-  padding-top: 24px;
+  padding-top: 40px;
   width: 295px;
-  height: 466px;
+  height: 550px;
 }
+
+.bottom-pannel {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 75px;
+}
+
 </style>
