@@ -4,6 +4,7 @@ import BackButton from '@/components/ui/BackButton.vue';
 import FilterButton from '@/components/ui/FilterButton.vue';
 import LikeButton from '@/components/ui/LikeButton.vue';
 import DislikeButton from '@/components/ui/DislikeButton.vue';
+import Sidebar from '@/components/elements/home/Sidebar.vue';
 </script>
 
 <template>
@@ -22,6 +23,10 @@ import DislikeButton from '@/components/ui/DislikeButton.vue';
       <DislikeButton />
       <LikeButton />
     </div>
+  </div>
+
+  <div class="home-sidebar">
+    <Sidebar />
   </div>
 </template>
 
