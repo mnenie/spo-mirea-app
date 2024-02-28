@@ -1,7 +1,8 @@
 <template>
   <div class="code-main">
-    <div>{{ minutes }}:{{ seconds }}</div>
-    <p class="code-text">Введите код подтверждения:</p>
+    <BackButton />
+    <div class="code-timer">{{ minutes }}:{{ seconds }}</div>
+    <p class="code-text">Введите код <br />подтверждения</p>
     <div class="input-div">
       <v-otp-input
         input-classes="otp-input"
@@ -28,10 +29,14 @@
       <button class="zero-button" @click="inputDigit(0)">0</button>
       <button class="delete-button" @click="deleteDigit()">⌫</button>
     </div>
+    <button class="re-code" @click="restartTimer" :disabled="totalSeconds.value > 0">
+      Отправить заново
+    </button>
   </div>
 </template>
 
 <script setup>
+import BackButton from '@/components/ui/BackButton.vue'
 import { ref, onMounted, onBeforeUnmount } from 'vue'
 import VOtpInput from 'vue3-otp-input'
 
@@ -48,7 +53,7 @@ const startTimer = () => {
       updateTime()
     } else {
       clearInterval(timer)
-      // Выполните действия, которые нужно сделать после завершения времени
+      // Действия при завершении таймера
     }
   }, 1000)
 }
@@ -76,6 +81,14 @@ const onChange = (value) => {
   code.value = value
 }
 
+const restartTimer = () => {
+  // Сбросить таймер
+  totalSeconds.value = 60
+  clearInterval(timer)
+  // Запустить таймер заново
+  startTimer()
+}
+
 onMounted(() => {
   startTimer()
 })
@@ -86,16 +99,27 @@ onBeforeUnmount(() => {
 </script>
 
 <style scoped>
+.code-main {
+  padding-top: 30px;
+}
+.code-timer {
+  margin-top: 30px;
+  font-size: 30px;
+  margin-bottom: 30px;
+}
 .input-div {
   display: flex;
   justify-content: center;
   width: 100%;
+  margin-bottom: 30px;
 }
 .input-div v-otp-input {
   width: 100%;
 }
 .code-text {
   margin-bottom: 30px;
+  font-size: 16px;
+  opacity: 0.7;
 }
 .code-main {
   display: flex;
@@ -108,6 +132,18 @@ onBeforeUnmount(() => {
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 10px;
   margin-top: 20px;
+  margin-bottom: 50px;
+}
+.zero-button,
+.delete-button,
+.buttons button {
+  width: 100%;
+  height: 50px;
+  font-size: 20px;
+  background-color: transparent; /* Удаление фона для всех кнопок */
+}
+.buttons button {
+  border: none; /* Добавление границы для всех кнопок */
 }
 .zero-button {
   grid-column: 2;
@@ -122,7 +158,7 @@ onBeforeUnmount(() => {
 }
 /* Применение стилей к дочерним элементам компонента VOtpInput */
 ::v-deep .otp-input {
-  width: 58px;
+  width: 50px;
   height: 50px;
   padding: 5px;
   margin: 0 10px;
@@ -146,5 +182,10 @@ onBeforeUnmount(() => {
   font-size: 15px;
   text-align: center;
   font-weight: 600;
+}
+.re-code {
+  border: none;
+  background: none;
+  color: #e94057;
 }
 </style>
