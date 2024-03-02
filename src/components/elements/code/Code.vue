@@ -1,5 +1,6 @@
 <script setup>
 import BackButton from '@/components/ui/BackButton.vue'
+import { useAuth } from '@/stores/auth.store';
 import { PROFILE_ROUTE } from '@/utils/consts';
 import { ref, onMounted, onBeforeUnmount, watchEffect } from 'vue'
 import { useRouter } from 'vue-router';
@@ -8,6 +9,7 @@ import VOtpInput from 'vue3-otp-input'
 const totalSeconds = ref(60)
 const minutes = ref('01')
 const seconds = ref('00')
+const authStore = useAuth()
 let timer
 
 const code = ref('')
@@ -63,8 +65,10 @@ onBeforeUnmount(() => {
   clearInterval(timer)
 })
 
+
 watchEffect(() => {
-  if(code.value.split('').length === 4){
+  if(code.value.split('').length === 6){
+    authStore.verifyOtp(code)
     router.push(PROFILE_ROUTE)
   }
 })
@@ -79,10 +83,10 @@ watchEffect(() => {
       <v-otp-input
         input-classes="otp-input"
         separator=""
-        :num-inputs="4"
+        :num-inputs="6"
         :should-auto-focus="true"
         :is-input-num="true"
-        :placeholder="['0', '0', '0', '0']"
+        :placeholder="['0', '0', '0', '0', '0', '0']"
         :value="code"
         @on-change="onChange"
         @on-complete="onComplete"
@@ -167,8 +171,8 @@ watchEffect(() => {
 }
 /* Применение стилей к дочерним элементам компонента VOtpInput */
 ::v-deep .otp-input {
-  width: 50px;
-  height: 50px;
+  width: 30px;
+  height: 30px;
   padding: 5px;
   margin: 0 10px;
   font-size: 20px;

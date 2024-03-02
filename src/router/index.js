@@ -26,7 +26,7 @@ export const routes = [
     name: 'profile',
     component: () => import('@/pages/ProfilePage.vue'),
     meta: {
-      auth: true,
+      auth: false,
       layout: DefaultLayout
     }
   },
@@ -85,12 +85,10 @@ const router = createRouter({
   routes: routes
 })
 
-router.beforeEach((to, from, next) => {
+router.beforeEach(async(to) => {
   const token = sessionStorage.getItem('token')
   if (to.meta.auth && !token) {
-    next(AUTH_ROUTE)
-  } else {
-    next()
+    return AUTH_ROUTE
   }
 })
 

@@ -1,9 +1,9 @@
 import UserService from "@/services/UserService";
-import { HOME_ROUTE, REGISTRATION_ROUTE } from "@/utils/consts";
+import { CODE_ROUTE, HOME_ROUTE, REGISTRATION_ROUTE } from "@/utils/consts";
 import { defineStore } from "pinia";
 import { ref } from 'vue'
 import { useRouter } from "vue-router";
-import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { GoogleAuthProvider, signInWithPopup, signInWithPhoneNumber } from "firebase/auth";
 import { auth } from '@/firebase/index'
 
 export const useAuth = defineStore('auth', () => {
@@ -37,8 +37,8 @@ export const useAuth = defineStore('auth', () => {
     }
   }
 
-  const userLoginWithGoogle = async() => {
-    try{
+  const userLoginWithGoogle = async () => {
+    try {
       const provider = new GoogleAuthProvider()
       signInWithPopup(auth, provider).then((response) => {
         GoogleAuthProvider.credentialFromResult(response)
@@ -60,12 +60,37 @@ export const useAuth = defineStore('auth', () => {
       user.value = {}
       token.value = ''
       return response
-    } catch (err) { 
-      console.log(err) 
+    } catch (err) {
+      console.log(err)
+    }
+  }
+
+  const onPhoneLogin = async (recaptchaVerifier, number) => {
+    const appVerifier = recaptchaVerifier.value;
+    try {
+      const confirmationResult = await signInWithPhoneNumber(auth, number.value, appVerifier);
+      user.value = confirmationResult;
+      router.push(CODE_ROUTE)
+      console.log(user.value)
+    } catch (error) {
+      console.error("Error sending verification code", error);
+    }
+  }
+
+  const verifyOtp = async (code) => {
+    try {
+      const response = await user.value.confirm(code.value)
+      token.value = response.user.accessToken
+      sessionStorage.setItem('token', token.value)
+      user.value = response.user
+      return response
+    }
+    catch (e) {
+      console.log(e)
     }
   }
 
   return {
-    user, token, userRegistrationWithEmail, userLoginWithEmail, userLogout, userLoginWithGoogle
+    user, token, userRegistrationWithEmail, userLoginWithEmail, userLogout, userLoginWithGoogle, onPhoneLogin, verifyOtp
   }
 })

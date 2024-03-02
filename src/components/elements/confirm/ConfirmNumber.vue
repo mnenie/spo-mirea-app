@@ -2,15 +2,12 @@
 import { ref, onMounted } from 'vue'
 const number = ref('')
 import { auth } from '@/firebase/index'
-import { RecaptchaVerifier, signInWithPhoneNumber } from 'firebase/auth';
-import { CODE_ROUTE } from '@/utils/consts';
-import { useRouter } from 'vue-router';
+import { RecaptchaVerifier } from 'firebase/auth';
+import { useAuth } from '@/stores/auth.store';
 
-const router = useRouter()
 
 const recaptchaVerifier = ref(null);
 const recaptchaWidgetId = ref(null);
-const confirmResult = ref(null);
 
 onMounted(() => {
   auth.useDeviceLanguage();
@@ -22,19 +19,11 @@ onMounted(() => {
   });
 });
 
-const onSubmit = async() => {
-  const appVerifier = recaptchaVerifier.value;
-  try{
-    const confirmationResult = await signInWithPhoneNumber(auth, number.value, appVerifier);
-    confirmResult.value = confirmationResult;
-    if(confirmResult.value){
-      router.push(CODE_ROUTE)
-    }
-  } catch (error) {
-    console.error("Error sending verification code", error);
-  }
-}
+const authStore = useAuth()
 
+const onPhoneAuth = async() => {
+  await authStore.onPhoneLogin(recaptchaVerifier, number)
+}
 
 </script>
 
@@ -47,7 +36,7 @@ const onSubmit = async() => {
         учетной записи.</p>
       <DefaultInput v-model="number" :placeholder="'+7 (XXX) XXX-XX-XX'" />
     </div>  
-    <RedButton @click="onSubmit" id="sign-in-button">Продолжить</RedButton>
+    <RedButton @click="onPhoneAuth" id="sign-in-button">Продолжить</RedButton>
   </div>
 </template>
 
