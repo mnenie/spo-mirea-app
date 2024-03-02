@@ -1,6 +1,78 @@
+<script setup>
+import BackButton from '@/components/ui/BackButton.vue'
+import { PROFILE_ROUTE } from '@/utils/consts';
+import { ref, onMounted, onBeforeUnmount, watchEffect } from 'vue'
+import { useRouter } from 'vue-router';
+import VOtpInput from 'vue3-otp-input'
+
+const totalSeconds = ref(60)
+const minutes = ref('01')
+const seconds = ref('00')
+let timer
+
+const code = ref('')
+
+const startTimer = () => {
+  timer = setInterval(() => {
+    if (totalSeconds.value > 0) {
+      totalSeconds.value--
+      updateTime()
+    } else {
+      clearInterval(timer)
+    }
+  }, 1000)
+}
+
+const updateTime = () => {
+  minutes.value = pad(parseInt(totalSeconds.value / 60))
+  seconds.value = pad(totalSeconds.value % 60)
+}
+
+const pad = (val) => {
+  return val < 10 ? '0' + val : val
+}
+
+const inputDigit = (digit) => {
+  if (code.value.length < 4) {
+    code.value += digit
+  }
+}
+
+const deleteDigit = () => {
+  code.value = code.value.slice(0, -1)
+}
+
+const onChange = (value) => {
+  code.value = value
+}
+
+const router = useRouter()
+
+const restartTimer = () => {
+  router.push('/confirm/phone')
+  totalSeconds.value = 60
+  clearInterval(timer)
+  startTimer()
+}
+
+onMounted(() => {
+  startTimer()
+})
+
+onBeforeUnmount(() => {
+  clearInterval(timer)
+})
+
+watchEffect(() => {
+  if(code.value.split('').length === 4){
+    router.push(PROFILE_ROUTE)
+  }
+})
+</script>
+
 <template>
   <div class="code-main">
-    <BackButton />
+    <BackButton @click="router.push('/confirm/phone')" />
     <div class="code-timer">{{ minutes }}:{{ seconds }}</div>
     <p class="code-text">Введите код <br />подтверждения</p>
     <div class="input-div">
@@ -34,69 +106,6 @@
     </button>
   </div>
 </template>
-
-<script setup>
-import BackButton from '@/components/ui/BackButton.vue'
-import { ref, onMounted, onBeforeUnmount } from 'vue'
-import VOtpInput from 'vue3-otp-input'
-
-const totalSeconds = ref(60)
-const minutes = ref('01')
-const seconds = ref('00')
-let timer
-const code = ref('')
-
-const startTimer = () => {
-  timer = setInterval(() => {
-    if (totalSeconds.value > 0) {
-      totalSeconds.value--
-      updateTime()
-    } else {
-      clearInterval(timer)
-      // Действия при завершении таймера
-    }
-  }, 1000)
-}
-
-const updateTime = () => {
-  minutes.value = pad(parseInt(totalSeconds.value / 60))
-  seconds.value = pad(totalSeconds.value % 60)
-}
-
-const pad = (val) => {
-  return val < 10 ? '0' + val : val
-}
-
-const inputDigit = (digit) => {
-  if (code.value.length < 4) {
-    code.value += digit
-  }
-}
-
-const deleteDigit = () => {
-  code.value = code.value.slice(0, -1)
-}
-
-const onChange = (value) => {
-  code.value = value
-}
-
-const restartTimer = () => {
-  // Сбросить таймер
-  totalSeconds.value = 60
-  clearInterval(timer)
-  // Запустить таймер заново
-  startTimer()
-}
-
-onMounted(() => {
-  startTimer()
-})
-
-onBeforeUnmount(() => {
-  clearInterval(timer)
-})
-</script>
 
 <style scoped>
 .code-main {

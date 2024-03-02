@@ -1,58 +1,3 @@
-<template>
-  <div class="profile">
-    <div class="profile-form">
-      <h2 class="profile-title">Ваш профиль</h2>
-      <div class="profile-picture">
-        <img v-if="imageUrl" :src="imageUrl" alt="Profile Image" class="profile-image" />
-        <img
-          v-else
-          :src="defaultImage"
-          alt="Default Profile Image"
-          class="default-profile-image"
-          style="width: 100px; height: auto"
-        />
-        <label for="fileInput" class="file-input-label">
-          <img :src="uploadImage" alt="" />
-          <input type="file" id="fileInput" @change="handleFileUpload" style="display: none" />
-        </label>
-      </div>
-      <div class="profile-details">
-        <label for="firstName">Имя:</label>
-        <DefaultInput
-          type="text"
-          v-model="firstName"
-          @input="updateFirstName"
-          :placeholder="'Введите своё имя...'"
-        />
-        <span v-if="errors.firstName" style="color: var(--red-color); font-size: 10px">{{
-          errors.firstName
-        }}</span>
-        <br />
-        <label for="lastName">Фамилия:</label>
-        <DefaultInput
-          type="text"
-          v-model="lastName"
-          :placeholder="'Введите свою фамилию...'"
-          @input="updateLastName"
-        />
-        <span v-if="errors.lastName" style="color: var(--red-color); font-size: 10px">{{
-          errors.lastName
-        }}</span>
-
-        <datepicker
-          @update:modelValue="updateDate"
-          v-model="date"
-          placeholder="Введите свою дату рождения..."
-          class="data-picker"
-          :iconColor="'var(--red-color)'"
-        ></datepicker>
-      </div>
-    </div>
-
-    <RedButton @click="onSubmit">Подтвердить</RedButton>
-  </div>
-</template>
-
 <script setup>
 import { ref } from 'vue'
 import Datepicker from 'vuejs3-datepicker'
@@ -61,6 +6,11 @@ import { toTypedSchema } from '@vee-validate/zod'
 import * as zod from 'zod'
 import { useRouter } from 'vue-router'
 import { IAM_ROUTE } from '@/utils/consts.js'
+import useAddresses from '@/composables/useAddress'
+
+const {address} = useAddresses()
+const selected = ref(null)
+
 
 const imageUrl = ref(null)
 const date = ref(new Date())
@@ -111,6 +61,50 @@ const onSubmit = handleSubmit(async (values) => {
 })
 </script>
 
+<template>
+  <div class="profile">
+    <div class="profile-form">
+      <h2 class="profile-title">Ваш профиль</h2>
+      <div class="profile-picture">
+        <img v-if="imageUrl" :src="imageUrl" alt="Profile Image" class="profile-image" />
+        <img v-else :src="defaultImage" alt="Default Profile Image" class="default-profile-image"
+          style="width: 100px; height: auto" />
+        <label for="fileInput" class="file-input-label">
+          <img :src="uploadImage" alt="" />
+          <input type="file" id="fileInput" @change="handleFileUpload" style="display: none" />
+        </label>
+      </div>
+      <div class="profile-details">
+        <label style="font-size: 12px;" for="firstName">Имя:</label>
+        <DefaultInput type="text" v-model="firstName" @input="updateFirstName" :placeholder="'Введите своё имя...'" />
+        <span v-if="errors.firstName" style="color: var(--red-color); font-size: 10px">{{
+          errors.firstName
+        }}</span>
+        <br />
+        <label style="font-size: 12px;" for="lastName">Фамилия:</label>
+        <DefaultInput type="text" v-model="lastName" :placeholder="'Введите свою фамилию...'" @input="updateLastName" />
+        <span v-if="errors.lastName" style="color: var(--red-color); font-size: 10px">{{
+          errors.lastName
+        }}</span>
+
+        <span style="font-size: 12px; margin-top: 20px;">Город:</span>
+        <v-select :options="address" placeholder="Выберите свой город" label="city" v-model="selected">
+          <template #option="{ region, city }">
+            <h3 style="color: var(--black-color);" class="size_6">{{ region }}</h3>
+            <span style="color: var(--gray-600-color);" class="size_7">{{ city }}</span>
+          </template>
+        </v-select>
+
+        <datepicker @update:modelValue="updateDate" v-model="date" placeholder="Введите свою дату рождения..."
+          class="data-picker" :iconColor="'var(--red-color)'"></datepicker>
+      </div>
+    </div>
+
+    <RedButton @click="onSubmit">Подтвердить</RedButton>
+  </div>
+</template>
+
+
 <style scoped>
 .profile-title {
   margin-bottom: 20px;
@@ -119,19 +113,22 @@ const onSubmit = handleSubmit(async (values) => {
   font-size: 30px;
   margin-bottom: 78px;
 }
+
 .profile {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  height: 100dvh;
+  height: 100%;
 }
+
 .profile-form {
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100%;
 }
+
 .data-picker {
   width: 100% !important;
   margin-top: 30px;
@@ -150,6 +147,7 @@ const onSubmit = handleSubmit(async (values) => {
   width: 100px;
   height: auto;
 }
+
 .profile-image {
   border-radius: 25%;
   width: 100px;
@@ -164,12 +162,14 @@ const onSubmit = handleSubmit(async (values) => {
   width: 100%;
   margin-bottom: 100px;
 }
+
 .file-input-label {
   text-align: center;
   position: absolute;
   bottom: -10px;
   right: -10px;
 }
+
 .Iam-btn {
   margin-top: 20px;
   color: white;
@@ -180,6 +180,7 @@ const onSubmit = handleSubmit(async (values) => {
   height: 40px;
   transition: all 0.5s ease;
 }
+
 .Iam-btn:hover {
   background: rgb(161, 0, 0);
 }

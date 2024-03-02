@@ -8,7 +8,8 @@ export const routes = [
     name: 'home',
     component: () => import('@/pages/HomePage.vue'),
     meta: {
-      layout: DefaultLayout
+      auth: true,
+      layout: DefaultLayout,
     }
   },
   {
@@ -16,6 +17,7 @@ export const routes = [
     name: 'code',
     component: () => import('@/pages/CodePage.vue'),
     meta: {
+      auth: false,
       layout: DefaultLayout
     }
   },
@@ -24,6 +26,7 @@ export const routes = [
     name: 'profile',
     component: () => import('@/pages/ProfilePage.vue'),
     meta: {
+      auth: true,
       layout: DefaultLayout
     }
   },
@@ -32,6 +35,7 @@ export const routes = [
     name: 'iam',
     component: () => import('@/pages/IamPage.vue'),
     meta: {
+      auth: true,
       layout: DefaultLayout
     }
   },
@@ -40,6 +44,7 @@ export const routes = [
     name: 'auth',
     component: () => import('@/pages/AuthPage.vue'),
     meta: {
+      auth: false,
       layout: DefaultLayout
     }
   },
@@ -48,6 +53,7 @@ export const routes = [
     name: 'registration',
     component: () => import('@/pages/AuthPage.vue'),
     meta: {
+      auth: false,
       layout: DefaultLayout
     }
   },
@@ -56,6 +62,7 @@ export const routes = [
     name: 'confirm',
     component: () => import('@/pages/ConfirmPage.vue'),
     meta: {
+      auth: false,
       layout: DefaultLayout
     },
     children: [
@@ -76,6 +83,15 @@ export const routes = [
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: routes
+})
+
+router.beforeEach((to, from, next) => {
+  const token = sessionStorage.getItem('token')
+  if (to.meta.auth && !token) {
+    next(AUTH_ROUTE)
+  } else {
+    next()
+  }
 })
 
 export default router

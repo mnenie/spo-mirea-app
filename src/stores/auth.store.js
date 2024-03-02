@@ -64,6 +64,7 @@ export const useAuth = defineStore('auth', () => {
       console.log(err) 
     }
   }
+
   return {
     user, token, userRegistrationWithEmail, userLoginWithEmail, userLogout, userLoginWithGoogle
   }
