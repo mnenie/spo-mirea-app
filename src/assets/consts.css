@@ -35,14 +35,13 @@ button {
   border: 1px solid var(--border-color) !important;
 }
 
-
 .vs__dropdown-toggle {
   border-radius: 10px !important;
   border: 1px solid var(--border-color) !important;
   padding: 2px 15px !important;
 }
 
-.vs__search{
+.vs__search {
   padding: 8px 6px !important;
   font-size: 11.5px !important;
   color: var(--text-color) !important;
@@ -51,4 +50,8 @@ button {
 
 .vs__selected {
   font-size: 12px !important;
+}
+
+.swiper-3d {
+  perspective: 754px !important;
 }

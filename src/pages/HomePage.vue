@@ -1,15 +1,18 @@
 <script setup>
-import Slider from '@/components/elements/home/Slider.vue';
-import BackButton from '@/components/ui/BackButton.vue';
-import FilterButton from '@/components/ui/FilterButton.vue';
-import LikeButton from '@/components/ui/LikeButton.vue';
-import DislikeButton from '@/components/ui/DislikeButton.vue';
-import Sidebar from '@/components/elements/home/Sidebar.vue';
+import Slider from '@/components/elements/home/Slider.vue'
+import BackButton from '@/components/ui/BackButton.vue'
+import FilterButton from '@/components/ui/FilterButton.vue'
+import LikeButton from '@/components/ui/LikeButton.vue'
+import DislikeButton from '@/components/ui/DislikeButton.vue'
+import { useSlider } from '@/stores/slider.store'
+// import Sidebar from '@/components/elements/home/Sidebar.vue'
+
+const sliderStore = useSlider()
 </script>
 
 <template>
-  <div class = "container">
-    <div class = "top-pannel">
+  <div class="container">
+    <div class="top-pannel">
       <BackButton />
       <h1>Поиск</h1>
       <FilterButton />
@@ -20,14 +23,14 @@ import Sidebar from '@/components/elements/home/Sidebar.vue';
     </div>
 
     <div class="bottom-pannel">
-      <DislikeButton />
-      <LikeButton />
+      <DislikeButton @click="sliderStore.prevSlide" />
+      <LikeButton @click="sliderStore.nextSlide" />
     </div>
   </div>
-
+  <!-- 
   <div class="home-sidebar">
     <Sidebar />
-  </div>
+  </div> -->
 </template>
 
 <style scoped>
@@ -61,5 +64,4 @@ h1 {
   justify-content: space-between;
   padding-top: 75px;
 }
-
 </style>

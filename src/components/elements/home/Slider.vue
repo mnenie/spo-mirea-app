@@ -1,87 +1,43 @@
 <template>
-    <swiper
-      :effect="'cards'"
-      :grabCursor="true"
-      :modules="modules"
-      class="mySwiper"
-    >
-      <swiper-slide><img src="/Img/slider-pic1.jpg" class="slide-image"></swiper-slide>
-      <swiper-slide><img src="/Img/slider-pic2.jpg" class="slide-image"></swiper-slide>
-      <swiper-slide><img src="/Img/slider-pic3.jpg" class="slide-image"></swiper-slide>
-      <swiper-slide><img src="/Img/slider-pic4.jpg" class="slide-image"></swiper-slide>
+  <swiper
+    @swiper="sliderStore.onSwiper"
+    :effect="'cards'"
+    :grabCursor="true"
+    :modules="modules"
+    :loop="true"
+    class="mySwiper"
+    :centeredSlides="true"
+  >
+    <swiper-slide><img src="/Img/slider-pic1.jpg" class="slide-image" /></swiper-slide>
+    <swiper-slide><img src="/Img/slider-pic2.jpg" class="slide-image" /></swiper-slide>
+    <swiper-slide><img src="/Img/slider-pic3.jpg" class="slide-image" /></swiper-slide>
+    <swiper-slide><img src="/Img/slider-pic4.jpg" class="slide-image" /></swiper-slide>
+    <swiper-slide><img src="/Img/slider-pic1.jpg" class="slide-image" /></swiper-slide>
+    <swiper-slide><img src="/Img/slider-pic2.jpg" class="slide-image" /></swiper-slide>
+    <swiper-slide><img src="/Img/slider-pic3.jpg" class="slide-image" /></swiper-slide>
+    <swiper-slide><img src="/Img/slider-pic4.jpg" class="slide-image" /></swiper-slide>
 
-      <!-- путь до public писать не надо /Img/* ты уже попадаешь в файл в папке Img -->
-    </swiper>
-  </template>
-  
-  <script>
-    // Import Swiper Vue.js components
-    
-    import { Swiper, SwiperSlide } from 'swiper/vue';
-  
-    // Import Swiper styles
-    import 'swiper/css';
-  
-    import 'swiper/css/effect-cards';
-  
- 
-  
-    // import required modules
-    import { EffectCards } from 'swiper/modules';
-  
-    export default {
-      components: {
-        Swiper,
-        SwiperSlide,
-      },
-      setup() {
-        return {
-          modules: [EffectCards],
-        };
-      },
-    };
-  </script>
-  
+    <!-- путь до public писать не надо /Img/* ты уже попадаешь в файл в папке Img -->
+  </swiper>
+</template>
+
+<script setup>
+import { Swiper, SwiperSlide } from 'swiper/vue'
+
+import 'swiper/css'
+import 'swiper/css/effect-cards'
+
+import { EffectCards } from 'swiper/modules'
+import { useSlider } from '@/stores/slider.store'
+const modules = [EffectCards]
+
+const sliderStore = useSlider()
+</script>
+
 <style scoped>
-#app { height: 100% }
-html,
-body {
-  position: relative;
-  height: 100%;
-}
-
-body {
-  background: #eee;
-  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
-  font-size: 14px;
-  color: #000;
-  margin: 0;
-  padding: 0;
-}
-
-body {
-  background: #fff;
-  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
-  font-size: 14px;
-  color: #000;
-  margin: 0;
-  padding: 0;
-}
-
-html,
-body {
-  position: relative;
-  height: 100%;
-}
-
-#app {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 .swiper {
-  width: 295px;
+  max-width: 295px;
+  width: 100% !important;
   height: 550px;
 }
 
@@ -112,8 +68,8 @@ body {
 }
 
 .slide-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 </style>
