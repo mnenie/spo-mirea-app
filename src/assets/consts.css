@@ -5,7 +5,7 @@
 }
 
 body {
-  max-width: 412px;
+  max-width: 540px;
   margin: 0 auto;
   width: 100%;
   height: 100dvh;
@@ -14,7 +14,7 @@ body {
 }
 
 .container {
-  max-width: 295px;
+  max-width: 300px;
   margin: 0 auto;
   width: 100%;
 }
@@ -61,12 +61,12 @@ button {
 .n-base-select-menu .n-base-select-option .n-base-select-option__check {
   color: var(--red-color) !important;
 }
-.n-base-select{
+.n-base-select {
   color: var(--red-color) !important;
 }
 .n-base-select-option--pending {
   color: var(--text-color) !important;
 }
-.n-base-select-menu{
+.n-base-select-menu {
   margin-right: 20px !important;
 }

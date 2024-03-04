@@ -5,13 +5,12 @@ import Filter from '@/components/elements/home/Filter.vue'
 import LikeButton from '@/components/ui/LikeButton.vue'
 import DislikeButton from '@/components/ui/DislikeButton.vue'
 import { useSlider } from '@/stores/slider.store'
-// import Sidebar from '@/components/elements/home/Sidebar.vue'
 
 const sliderStore = useSlider()
 </script>
 
 <template>
-  <div class="container">
+  <div style="display: flex; align-items: center; flex-direction: column">
     <div class="top-pannel">
       <BackButton />
       <h1>Поиск</h1>
@@ -27,10 +26,6 @@ const sliderStore = useSlider()
       <LikeButton @click="sliderStore.nextSlide" />
     </div>
   </div>
-  <!-- 
-  <div class="home-sidebar">
-    <Sidebar />
-  </div> -->
 </template>
 
 <style scoped>
@@ -39,6 +34,7 @@ const sliderStore = useSlider()
   align-items: center;
   justify-content: space-between;
   padding-top: 44px;
+  width: 100%;
 }
 
 h1 {
@@ -63,5 +59,6 @@ h1 {
   align-items: center;
   justify-content: space-between;
   padding-top: 75px;
+  width: 100%;
 }
 </style>

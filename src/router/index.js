@@ -1,5 +1,14 @@
 import DefaultLayout from '@/layouts/DefaultLayout.vue'
-import { AUTH_ROUTE, CODE_ROUTE, CONFIRM_ROUTE, HOME_ROUTE, IAM_ROUTE, PROFILE_ROUTE, REGISTRATION_ROUTE } from '@/utils/consts'
+import HomeLayout from '@/layouts/HomeLayout.vue'
+import {
+  AUTH_ROUTE,
+  CODE_ROUTE,
+  CONFIRM_ROUTE,
+  HOME_ROUTE,
+  IAM_ROUTE,
+  PROFILE_ROUTE,
+  REGISTRATION_ROUTE
+} from '@/utils/consts'
 import { createRouter, createWebHistory } from 'vue-router'
 
 export const routes = [
@@ -9,7 +18,7 @@ export const routes = [
     component: () => import('@/pages/HomePage.vue'),
     meta: {
       auth: true,
-      layout: DefaultLayout,
+      layout: HomeLayout
     }
   },
   {
@@ -69,12 +78,12 @@ export const routes = [
       {
         path: '/confirm/phone',
         name: 'number',
-        component: () => import('@/components/elements/confirm/ConfirmNumber.vue'),
+        component: () => import('@/components/elements/confirm/ConfirmNumber.vue')
       },
-      { 
+      {
         path: '/confirm/email',
         name: 'email',
-        component: () => import('@/components/elements/confirm/ConfirmEmail.vue'),
+        component: () => import('@/components/elements/confirm/ConfirmEmail.vue')
       }
     ]
   }
@@ -85,7 +94,7 @@ const router = createRouter({
   routes: routes
 })
 
-router.beforeEach(async(to) => {
+router.beforeEach(async (to) => {
   const token = sessionStorage.getItem('token')
   if (to.meta.auth && !token) {
     return AUTH_ROUTE
@@ -93,4 +102,3 @@ router.beforeEach(async(to) => {
 })
 
 export default router
-
