@@ -3,6 +3,7 @@ import 'vue-select/dist/vue-select.css';
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 
+import naive from 'naive-ui';
 import App from './App.vue'
 import router from './router'
 import uicomponents from '@/components/ui'
@@ -14,6 +15,7 @@ initializeApp(firebaseConfig)
 
 const app = createApp(App)
 
+app.use(naive)
 app.use(createPinia())
 app.use(router)
 app.use(uicomponents)

@@ -1,7 +1,7 @@
 <script setup>
 import Slider from '@/components/elements/home/Slider.vue'
 import BackButton from '@/components/ui/BackButton.vue'
-import FilterButton from '@/components/ui/FilterButton.vue'
+import Filter from '@/components/elements/home/Filter.vue'
 import LikeButton from '@/components/ui/LikeButton.vue'
 import DislikeButton from '@/components/ui/DislikeButton.vue'
 import { useSlider } from '@/stores/slider.store'
@@ -15,7 +15,7 @@ const sliderStore = useSlider()
     <div class="top-pannel">
       <BackButton />
       <h1>Поиск</h1>
-      <FilterButton />
+      <Filter />
     </div>
 
     <div class="slider">

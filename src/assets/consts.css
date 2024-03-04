@@ -55,3 +55,18 @@ button {
 .swiper-3d {
   perspective: 754px !important;
 }
+.n-base-select-menu .n-base-select-option.n-base-select-option--selected {
+  color: var(--red-color) !important;
+}
+.n-base-select-menu .n-base-select-option .n-base-select-option__check {
+  color: var(--red-color) !important;
+}
+.n-base-select{
+  color: var(--red-color) !important;
+}
+.n-base-select-option--pending {
+  color: var(--text-color) !important;
+}
+.n-base-select-menu{
+  margin-right: 20px !important;
+}
