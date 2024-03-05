@@ -4,6 +4,7 @@ import BackButton from '@/components/ui/BackButton.vue'
 import Filter from '@/components/elements/home/Filter.vue'
 import LikeButton from '@/components/ui/LikeButton.vue'
 import DislikeButton from '@/components/ui/DislikeButton.vue'
+import {IAM_ROUTE} from '@/utils/consts';
 import { useSlider } from '@/stores/slider.store'
 
 const sliderStore = useSlider()
@@ -12,7 +13,7 @@ const sliderStore = useSlider()
 <template>
   <div style="display: flex; align-items: center; flex-direction: column; overflow-x: hidden">
     <div class="top-pannel">
-      <BackButton />
+      <BackButton @click="$router.push(IAM_ROUTE)" class="btn" />
       <h1>Поиск</h1>
       <Filter />
     </div>

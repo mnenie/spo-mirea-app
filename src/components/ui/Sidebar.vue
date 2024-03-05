@@ -1,4 +1,10 @@
+
+
 <script setup>
+
+
+import { HOME_ROUTE, PROFILE_ROUTE } from '@/utils/consts';
+import { useRouter } from 'vue-router';
 import { ref } from 'vue'
 const btns = ref([
   { id: 0, name: 'cards', url: '/icons/cards.png', active: true },
@@ -7,11 +13,25 @@ const btns = ref([
   { id: 3, name: 'people', url: '/icons/people.png', active: false }
 ])
 
+const router = useRouter()
 const changeActiveBtn = (id) => {
+  if (id === 3) {
+    router.push(PROFILE_ROUTE)
+    console.log(btns.value[3])
+  }
+  else if (id < 3) {
+    router.push(HOME_ROUTE)
+    console.log(btns.value[id])
+  }
   btns.value.map((btn, i) => {
     btn.active = i === id
+
+ 
+
   })
 }
+
+
 </script>
 
 <template>
@@ -47,3 +67,5 @@ const changeActiveBtn = (id) => {
   border-top: 2px solid var(--red-color);
 }
 </style>
+
+
