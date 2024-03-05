@@ -10,7 +10,7 @@ const sliderStore = useSlider()
 </script>
 
 <template>
-  <div style="display: flex; align-items: center; flex-direction: column">
+  <div style="display: flex; align-items: center; flex-direction: column; overflow-x: hidden">
     <div class="top-pannel">
       <BackButton />
       <h1>Поиск</h1>
@@ -49,8 +49,7 @@ h1 {
 
 .slider {
   padding-top: 40px;
-  width: 295px;
-  height: 550px;
+  width: 100%;
 }
 
 .bottom-pannel {
@@ -58,7 +57,7 @@ h1 {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-top: 75px;
+  padding: 40px 0 100px 0;
   width: 100%;
 }
 </style>

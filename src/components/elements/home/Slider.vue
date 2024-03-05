@@ -5,7 +5,6 @@
     :grabCursor="true"
     :modules="modules"
     :loop="true"
-    class="mySwiper"
     :centeredSlides="true"
   >
     <swiper-slide><img src="/Img/slider-pic1.jpg" class="slide-image" /></swiper-slide>
@@ -36,9 +35,9 @@ const sliderStore = useSlider()
 
 <style scoped>
 .swiper {
-  max-width: 295px;
+  max-width: 280px;
   width: 100% !important;
-  height: 550px;
+  height: 430px;
 }
 
 .swiper-slide {
