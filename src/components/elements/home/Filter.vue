@@ -8,6 +8,9 @@
 import { ref } from 'vue'
 import FilterButton from '@/components/ui/FilterButton.vue'
 
+const props = defineProps({
+  users: Array
+})
 const value = ref(null)
 const options = [
   {

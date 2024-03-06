@@ -16,7 +16,7 @@ const sliderStore = useSlider()
     <div class="top-pannel">
       <BackButton @click="$router.push(IAM_ROUTE)" class="btn" />
       <h1>Поиск</h1>
-      <Filter />
+      <Filter :users="users"/>
     </div>
 
     <div class="slider">
