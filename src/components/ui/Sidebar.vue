@@ -58,9 +58,23 @@ const changeActiveBtn = (id) => {
   padding: 10px 30px;
 }
 
-.active {
-  border-top: 2px solid var(--red-color);
+
+
+.sidebar_btn {
+  position: relative;
 }
+
+.active::before {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%); 
+  width: 60px; 
+  height: 2px; 
+  background-color: var(--red-color)
+}
+
 </style>
 
 

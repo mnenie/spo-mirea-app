@@ -1,27 +1,3 @@
-<!-- <template>
-  <swiper
-    @swiper="sliderStore.onSwiper"
-    :effect="'cards'"
-    :grabCursor="true"
-    :modules="modules"
-    :loop="true"
-    :centeredSlides="true"
-  >
-    <swiper-slide><img src="/Img/molchanov.png" class="slide-image" /></swiper-slide>
-    <swiper-slide><img src="/Img/xolkin.png" class="slide-image" /></swiper-slide>
-    <swiper-slide><img src="/Img/poziev.png" class="slide-image" /></swiper-slide>
-    <swiper-slide><img src="/Img/eric.png" class="slide-image" /></swiper-slide>
-    <swiper-slide><img src="/Img/peshkov.png" class="slide-image" /></swiper-slide>
-    <swiper-slide><img src="/Img/slider-pic2.png" class="slide-image" /></swiper-slide>
-    <swiper-slide><img src="/Img/dora.png" class="slide-image" /></swiper-slide>
-    <swiper-slide><img src="/Img/nastya.png" class="slide-image" /></swiper-slide>
-    <swiper-slide><img src="/Img/galina.png" class="slide-image" /></swiper-slide>
-
-    
-  </swiper>
-</template> -->
-
-
 <template>
   <swiper
     @swiper="sliderStore.onSwiper"
