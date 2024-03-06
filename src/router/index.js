@@ -7,7 +7,8 @@ import {
   HOME_ROUTE,
   IAM_ROUTE,
   PROFILE_ROUTE,
-  REGISTRATION_ROUTE
+  REGISTRATION_ROUTE,
+  NOT_FOUND_ROUTE
 } from '@/utils/consts'
 import { createRouter, createWebHistory } from 'vue-router'
 
@@ -86,7 +87,16 @@ export const routes = [
         component: () => import('@/components/elements/confirm/ConfirmEmail.vue')
       }
     ]
-  }
+  },
+  {
+    path: NOT_FOUND_ROUTE,
+    name: 'notfound',
+    component: () => import('@/pages/404.vue'),
+    meta: {
+      auth: false,
+      layout: DefaultLayout
+    }
+  },
 ]
 
 const router = createRouter({
@@ -94,11 +104,11 @@ const router = createRouter({
   routes: routes
 })
 
-// router.beforeEach(async (to) => {
-//   const token = sessionStorage.getItem('token')
-//   if (to.meta.auth && !token) {
-//     return AUTH_ROUTE
-//   }
-// })
+router.beforeEach(async (to) => {
+  const token = sessionStorage.getItem('token')
+  if (to.meta.auth && !token) {
+    return AUTH_ROUTE
+  }
+})
 
 export default router

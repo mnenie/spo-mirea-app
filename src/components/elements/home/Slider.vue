@@ -1,3 +1,21 @@
+<script setup>
+import { Swiper, SwiperSlide } from 'swiper/vue'
+
+import 'swiper/css'
+import 'swiper/css/effect-cards'
+
+import { EffectCards } from 'swiper/modules'
+import { useSlider } from '@/stores/slider.store'
+
+const props = defineProps({
+  users: Array
+})
+
+const modules = [EffectCards]
+
+const sliderStore = useSlider()
+</script>
+
 <template>
   <swiper
     @swiper="sliderStore.onSwiper"
@@ -15,27 +33,6 @@
     </swiper-slide>
   </swiper>
 </template>
-
-<script setup>
-import { Swiper, SwiperSlide } from 'swiper/vue'
-
-
-
-import 'swiper/css'
-import 'swiper/css/effect-cards'
-
-import { EffectCards } from 'swiper/modules'
-import { useSlider } from '@/stores/slider.store'
-
-const props = defineProps({
-  users: Array
-})
-
-
-const modules = [EffectCards]
-
-const sliderStore = useSlider()
-</script>
 
 <style scoped>
 .swiper {
@@ -81,7 +78,7 @@ const sliderStore = useSlider()
   left: 0;
   width: 100%;
   padding: 10px;
-  background-color: rgba(0, 0, 0, 0.5); 
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
 .info_bar p {

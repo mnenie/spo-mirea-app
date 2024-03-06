@@ -1,36 +1,31 @@
 <script setup>
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 import Datepicker from 'vuejs3-datepicker'
 import { useField, useForm } from 'vee-validate'
 import { toTypedSchema } from '@vee-validate/zod'
 import * as zod from 'zod'
 import { useRouter } from 'vue-router'
 import { IAM_ROUTE } from '@/utils/consts.js'
-import useAddresses from '@/composables/useAddress'
+import { useUsers } from '@/stores/user.store'
+// import useAddresses from '@/composables/useAddress'
 
-const {address} = useAddresses()
-const selected = ref(null)
+// const {address} = useAddresses()
 
+//in dev mode
 
-const imageUrl = ref(null)
-const date = ref(new Date())
+const userInLocal = localStorage.getItem("user") ? JSON.parse(localStorage.getItem("user")) : {};
+
+const selected = ref(userInLocal.city || null)
+
+const imageUrl = ref(userInLocal.img || null)
+const date = ref(userInLocal.date || new Date())
 
 const defaultImage = '../Img/default-profile-image.jpg'
 const uploadImage = '../Img/camera.png'
 
-// Обработчик загрузки изображения
 const handleFileUpload = (event) => {
   const file = event.target.files[0]
   imageUrl.value = URL.createObjectURL(file)
-}
-
-const updateFirstName = (event) => {
-  firstName.value = event.target.value
-}
-
-// Обновление значения фамилии
-const updateLastName = (event) => {
-  lastName.value = event.target.value
 }
 
 const updateDate = (e) => {
@@ -51,13 +46,22 @@ const { handleSubmit, errors } = useForm({
   validationSchema
 })
 
-const { value: firstName } = useField('firstName')
-const { value: lastName } = useField('lastName')
+const { value: firstName } = useField('firstName');
+const { value: lastName } = useField('lastName');
 
 const router = useRouter()
+const userStore = useUsers()
 
 const onSubmit = handleSubmit(async (values) => {
   router.push(IAM_ROUTE)
+  userStore.setUserParams(imageUrl.value, firstName.value, lastName.value, selected.value, date.value)
+})
+
+onMounted(() => {
+  if(localStorage.getItem("user")){
+    firstName.value = userInLocal.name
+    lastName.value = userInLocal.lastname
+  }
 })
 </script>
 
@@ -76,19 +80,19 @@ const onSubmit = handleSubmit(async (values) => {
       </div>
       <div class="profile-details">
         <label style="font-size: 12px;" for="firstName">Имя:</label>
-        <DefaultInput type="text" v-model="firstName" @input="updateFirstName" :placeholder="'Введите своё имя...'" />
+        <DefaultInput type="text" v-model="firstName" :placeholder="'Введите своё имя...'" />
         <span v-if="errors.firstName" style="color: var(--red-color); font-size: 10px">{{
           errors.firstName
         }}</span>
         <br />
         <label style="font-size: 12px;" for="lastName">Фамилия:</label>
-        <DefaultInput type="text" v-model="lastName" :placeholder="'Введите свою фамилию...'" @input="updateLastName" />
+        <DefaultInput type="text" v-model="lastName" :placeholder="'Введите свою фамилию...'"/>
         <span v-if="errors.lastName" style="color: var(--red-color); font-size: 10px">{{
           errors.lastName
         }}</span>
 
         <span style="font-size: 12px; margin-top: 20px;">Город:</span>
-        <v-select :options="address" placeholder="Выберите свой город" label="city" v-model="selected">
+        <v-select :options="['Москва', 'Санкт-Петербург']" placeholder="Выберите свой город" label="city" v-model="selected">
           <template #option="{ region, city }">
             <h3 style="color: var(--black-color);" class="size_6">{{ region }}</h3>
             <span style="color: var(--gray-600-color);" class="size_7">{{ city }}</span>

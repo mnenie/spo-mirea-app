@@ -4,12 +4,19 @@ import BackButton from '@/components/ui/BackButton.vue'
 import Filter from '@/components/elements/home/Filter.vue'
 import LikeButton from '@/components/ui/LikeButton.vue'
 import DislikeButton from '@/components/ui/DislikeButton.vue'
+
 import {IAM_ROUTE} from '@/utils/consts';
 import { useSlider } from '@/stores/slider.store'
 import { useUsers } from '@/stores/user.store'
-const userStore = useUsers()
+import { onBeforeMount } from 'vue'
 
+const userStore = useUsers()
 const sliderStore = useSlider()
+
+
+onBeforeMount(() => {
+  userStore.getUsersStore()
+})
 </script>
 
 <template>

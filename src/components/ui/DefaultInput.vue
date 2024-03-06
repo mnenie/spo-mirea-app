@@ -17,6 +17,7 @@ defineProps({
   border: 1px solid var(--border-color);
   color: var(--text-color);
   outline: none;
+  font-size: 12px;
 }
 .input:hover{
   border: 1px solid var(--red-color);
