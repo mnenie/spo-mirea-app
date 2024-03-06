@@ -4,7 +4,7 @@
 * [Пешков Александр Николаевич](https://github.com/mnenie) - Teamlead/Developer
 * [Молчанов Иван Андреевич](https://github.com/10q4attention) - Developer
 * [Холкин Данила Сергеевич](https://github.com/Missiadar) - Developer
-* [Медведев Иван Сергеевич](https://github.com/osirisd3) - Developer
+* [Медведев Иван Александрович](https://github.com/osirisd3) - Developer
 
 
 ___
