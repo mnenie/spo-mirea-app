@@ -58,14 +58,7 @@ const changeActiveBtn = (id) => {
   padding: 10px 30px;
 }
 
-/* .sidebar_btn {
-  position: relative;
-}
 
-.active {
-  border-top: 2px solid var(--red-color);
-  border-spacing: 10px;
-} */
 
 .sidebar_btn {
   position: relative;
@@ -74,12 +67,12 @@ const changeActiveBtn = (id) => {
 .active::before {
   content: '';
   position: absolute;
-  top: -10px; /* Расстояние от нижней границы .sidebar_btn */
-  left: 50%; /* Центрирование по горизонтали */
-  transform: translateX(-50%); /* Центрирование по горизонтали */
-  width: 60px; /* Длина линии */
-  height: 2px; /* Ширина линии */
-  background-color: var(--red-color) /* Цвет линии */
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%); 
+  width: 60px; 
+  height: 2px; 
+  background-color: var(--red-color)
 }
 
 </style>
