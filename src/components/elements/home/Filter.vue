@@ -5,11 +5,12 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, watch } from 'vue'
 import FilterButton from '@/components/ui/FilterButton.vue'
+import { useUsers } from '@/stores/user.store';
 
-const value = ref(null)
-const options = [
+const value = ref([])
+const options = ref([
   {
     label: 'Какой пол Вы ищите',
     value: 'Какой пол Вы ищите',
@@ -36,5 +37,19 @@ const options = [
     label: 'Санкт-Петербург',
     value: 'Санкт-Петербург'
   }
-]
+])
+
+const userStore = useUsers()
+
+watch(value, () => {
+  const filters = {
+    gender: value.value.includes('Мужской') && value.value.includes('Женский') ? null :
+            value.value.includes('Мужской') ? 'Мужской' :
+            value.value.includes('Женский') ? 'Женский' : null,
+    city: value.value.includes('Москва') && value.value.includes('Санкт-Петербург') ? null :
+            value.value.includes('Москва') ? 'Москва' :
+            value.value.includes('Санкт-Петербург') ? 'Санкт-Петербург' : null,
+  };
+  userStore.filterUsers(filters);
+})
 </script>
