@@ -9,6 +9,9 @@
   >
     <swiper-slide v-for="user in users" :key="user.id">
       <img :src="user.img" class="slide-image" />
+      <div class="info_bar">
+        <p>{{ user.name }}, {{ user.age }}</p>
+      </div>
     </swiper-slide>
   </swiper>
 </template>
@@ -71,5 +74,18 @@ const sliderStore = useSlider()
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+.info_bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 10px;
+  background-color: rgba(0, 0, 0, 0.5); 
+}
+
+.info_bar p {
+  margin: 0;
+  color: #fff;
 }
 </style>
