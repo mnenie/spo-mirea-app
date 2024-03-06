@@ -17,17 +17,12 @@ const router = useRouter()
 const changeActiveBtn = (id) => {
   if (id === 3) {
     router.push(PROFILE_ROUTE)
-    console.log(btns.value[3])
   }
   else if (id < 3) {
     router.push(HOME_ROUTE)
-    console.log(btns.value[id])
   }
   btns.value.map((btn, i) => {
     btn.active = i === id
-
- 
-
   })
 }
 

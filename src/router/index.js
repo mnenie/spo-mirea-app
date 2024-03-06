@@ -94,11 +94,11 @@ const router = createRouter({
   routes: routes
 })
 
-router.beforeEach(async (to) => {
-  const token = sessionStorage.getItem('token')
-  if (to.meta.auth && !token) {
-    return AUTH_ROUTE
-  }
-})
+// router.beforeEach(async (to) => {
+//   const token = sessionStorage.getItem('token')
+//   if (to.meta.auth && !token) {
+//     return AUTH_ROUTE
+//   }
+// })
 
 export default router
