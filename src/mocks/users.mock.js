@@ -47,7 +47,7 @@ export const users = ref([
     lastname: 'Уралович',
     gender: 'Мужской',
     city: 'Москва',
-    img: '/Img/slider-pic2.png'
+    img: '/Img/slider-pic2.jpg'
   },
   {
     id: 6,

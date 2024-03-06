@@ -6,6 +6,7 @@ import LikeButton from '@/components/ui/LikeButton.vue'
 import DislikeButton from '@/components/ui/DislikeButton.vue'
 import {IAM_ROUTE} from '@/utils/consts';
 import { useSlider } from '@/stores/slider.store'
+import { users } from '@/mocks/users.mock.js'
 
 const sliderStore = useSlider()
 </script>
@@ -19,7 +20,7 @@ const sliderStore = useSlider()
     </div>
 
     <div class="slider">
-      <Slider />
+      <Slider :users="users"/>
     </div>
 
     <div class="bottom-pannel">

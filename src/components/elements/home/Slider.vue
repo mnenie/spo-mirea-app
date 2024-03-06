@@ -1,3 +1,27 @@
+<!-- <template>
+  <swiper
+    @swiper="sliderStore.onSwiper"
+    :effect="'cards'"
+    :grabCursor="true"
+    :modules="modules"
+    :loop="true"
+    :centeredSlides="true"
+  >
+    <swiper-slide><img src="/Img/molchanov.png" class="slide-image" /></swiper-slide>
+    <swiper-slide><img src="/Img/xolkin.png" class="slide-image" /></swiper-slide>
+    <swiper-slide><img src="/Img/poziev.png" class="slide-image" /></swiper-slide>
+    <swiper-slide><img src="/Img/eric.png" class="slide-image" /></swiper-slide>
+    <swiper-slide><img src="/Img/peshkov.png" class="slide-image" /></swiper-slide>
+    <swiper-slide><img src="/Img/slider-pic2.png" class="slide-image" /></swiper-slide>
+    <swiper-slide><img src="/Img/dora.png" class="slide-image" /></swiper-slide>
+    <swiper-slide><img src="/Img/nastya.png" class="slide-image" /></swiper-slide>
+    <swiper-slide><img src="/Img/galina.png" class="slide-image" /></swiper-slide>
+
+    
+  </swiper>
+</template> -->
+
+
 <template>
   <swiper
     @swiper="sliderStore.onSwiper"
@@ -7,27 +31,28 @@
     :loop="true"
     :centeredSlides="true"
   >
-    <swiper-slide><img src="/Img/slider-pic1.jpg" class="slide-image" /></swiper-slide>
-    <swiper-slide><img src="/Img/slider-pic2.jpg" class="slide-image" /></swiper-slide>
-    <swiper-slide><img src="/Img/slider-pic3.jpg" class="slide-image" /></swiper-slide>
-    <swiper-slide><img src="/Img/slider-pic4.jpg" class="slide-image" /></swiper-slide>
-    <swiper-slide><img src="/Img/slider-pic1.jpg" class="slide-image" /></swiper-slide>
-    <swiper-slide><img src="/Img/slider-pic2.jpg" class="slide-image" /></swiper-slide>
-    <swiper-slide><img src="/Img/slider-pic3.jpg" class="slide-image" /></swiper-slide>
-    <swiper-slide><img src="/Img/slider-pic4.jpg" class="slide-image" /></swiper-slide>
-
-    <!-- путь до public писать не надо /Img/* ты уже попадаешь в файл в папке Img -->
+    <swiper-slide v-for="user in users" :key="user.id">
+      <img :src="user.img" class="slide-image" />
+    </swiper-slide>
   </swiper>
 </template>
 
 <script setup>
 import { Swiper, SwiperSlide } from 'swiper/vue'
 
+
+
 import 'swiper/css'
 import 'swiper/css/effect-cards'
 
 import { EffectCards } from 'swiper/modules'
 import { useSlider } from '@/stores/slider.store'
+
+const props = defineProps({
+  users: Array
+})
+
+
 const modules = [EffectCards]
 
 const sliderStore = useSlider()
