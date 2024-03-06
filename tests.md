@@ -39,3 +39,11 @@ ___test9___
 ___test10___
 
 <img src="./public/tests_snaps/test10.png" />
+
+___test11___
+
+<img src="./public/tests_snaps/test11.png" />
+
+___test12___
+
+<img src="./public/tests_snaps/test12.png" />
