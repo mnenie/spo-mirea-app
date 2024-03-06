@@ -1,5 +1,5 @@
 import UserService from "@/services/UserService";
-import { CODE_ROUTE, HOME_ROUTE, REGISTRATION_ROUTE } from "@/utils/consts";
+import { CODE_ROUTE, HOME_ROUTE, REGISTRATION_ROUTE, PROFILE_ROUTE } from "@/utils/consts";
 import { defineStore } from "pinia";
 import { ref } from 'vue'
 import { useRouter } from "vue-router";
@@ -18,7 +18,7 @@ export const useAuth = defineStore('auth', () => {
       user.value = response.data.email
       sessionStorage.setItem('token', token.value)
       console.log(user.value)
-      router.push(HOME_ROUTE)
+      router.push(PROFILE_ROUTE)
     }
     catch (err) {
       console.log(err)
@@ -30,7 +30,7 @@ export const useAuth = defineStore('auth', () => {
       token.value = response.data.idToken
       sessionStorage.setItem('token', token.value)
       user.value = response.data.email
-      router.push(HOME_ROUTE)
+      router.push(PROFILE_ROUTE)
     }
     catch (err) {
       console.log(err)
@@ -45,7 +45,7 @@ export const useAuth = defineStore('auth', () => {
         token.value = response.user.accessToken
         sessionStorage.setItem('token', token.value)
         user.value = response.user
-        router.push(HOME_ROUTE)
+        router.push(PROFILE_ROUTE)
       })
     }
     catch (err) {
